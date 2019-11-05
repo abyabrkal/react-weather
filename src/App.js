@@ -4,8 +4,8 @@ import WeatherBox from './WeatherBox';
 
 function App() {
   return (
-    <div className="App">
-      <h1 className="App-header">The Weather</h1>
+    <div className="App-header">
+      <h1 className="App">The Weather</h1>
       <WeatherBox />
     </div>
   );

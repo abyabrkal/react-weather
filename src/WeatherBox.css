@@ -1,0 +1,31 @@
+
+.today {
+    margin: 10px;
+    font-size: 1.5em;
+}
+
+.w5box {
+    /* height: ; */
+    display: flex;
+    background-color: brown;
+    flex-direction: row;
+    font-size: 0.8em;
+}
+
+.w1box {
+    width: 100px;
+    height: 140px;
+    background-color: blanchedalmond;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid blue;
+    align-items: center;
+}
+
+.day {
+    margin: 2px;
+}
+
+.temphl {
+    display: inline-block;
+}
