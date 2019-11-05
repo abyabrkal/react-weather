@@ -4,28 +4,11 @@
     font-size: 1.5em;
 }
 
-.w5box {
-    /* height: ; */
-    display: flex;
-    background-color: brown;
+.wthr5days {
+    display: block;
     flex-direction: row;
-    font-size: 0.8em;
+    font-weight: normal;
+    line-height: 15px;
+    font-size: 13px;
 }
 
-.w1box {
-    width: 100px;
-    height: 140px;
-    background-color: blanchedalmond;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid blue;
-    align-items: center;
-}
-
-.day {
-    margin: 2px;
-}
-
-.temphl {
-    display: inline-block;
-}

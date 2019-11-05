@@ -1,28 +1,60 @@
 import React from 'react';
 import './WeatherBox.css';
+import WeatherOne from './WeatherOne';
+
+const wData = [
+  {
+    coord: { lon: -0.13, lat: 51.51 },
+    weather: [
+      {
+        id: 300,
+        main: "Drizzle",
+        description: "light intensity drizzle",
+        icon: "09d"
+      }
+    ],
+    base: "stations",
+    main: {
+      temp: 280.32,
+      pressure: 1012,
+      humidity: 81,
+      temp_min: 279.15,
+      temp_max: 281.15
+    },
+    visibility: 10000,
+    wind: { speed: 4.1, deg: 80 },
+    clouds: { all: 90 },
+    dt: 1485789600,
+    sys: {
+      type: 1,
+      id: 5091,
+      message: 0.0103,
+      country: "GB",
+      sunrise: 1485762037,
+      sunset: 1485794875
+    },
+    id: 2643743,
+    name: "London",
+    cod: 200
+  }
+];
+
+
+
+
 
 class WeatherBox extends React.Component {
  
-
     render() {
         return (
             <div>
-                <div className="today">{Date.now()}</div>
-                <div className="w5box">
-                    <div className="w1box">
-                        <p className="day">Wed</p>
-                        <img src="https://openweathermap.org/img/w/11d.png" alt="weather icon"/>
-                        <span>78</span>
-                        <span>67</span>
-                    </div>
-                    <div className="w1box">
-                        <p>Wed</p>
-                        <img src="https://openweathermap.org/img/w/10d.png" alt="weather icon"/>
-                        <div className="temphl">
-                            <span>78</span>
-                            <span>67</span>
-                        </div>
-                    </div>
+                <div className="today">{Date.now().toLocaleString()}</div>
+                <div className="wthr5days">
+                    <WeatherOne wData={wData}/>
+                    <WeatherOne />
+                    <WeatherOne />
+                    <WeatherOne />
+                    <WeatherOne />
                 </div>
             </div>
         );
