@@ -27,5 +27,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "guppy": {
+    "id": "a647ba90-ff86-11e9-a29f-7fc36fb9d2bd",
+    "name": "weather",
+    "type": "create-react-app",
+    "color": "#c41d00",
+    "icon": null,
+    "createdAt": 1572928939194
   }
 }
