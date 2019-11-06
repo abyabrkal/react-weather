@@ -2,23 +2,19 @@ import React from 'react';
 import './WeatherOne.css'
 
 class WeatherOne extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
 
     render() {
         return (
           <div className="wthr1day">
-            <p className="day">{this.props.wData.}</p>
+            <p className="day">{this.props.formattedWData.day}</p>
             <img
               className="wthrIco"
-              src="https://openweathermap.org/img/w/10d.png"
+              src={this.props.formattedWData.icon}
               alt="weather icon"
             />
             <div className="temphl">
-              <span className="tehigh">58</span>
-              <span className="telow">61</span>
+              <span className="tehigh">{this.props.formattedWData.temp_max}</span>
+              <span className="telow">{this.props.formattedWData.temp_min}</span>
             </div>
           </div>
         );

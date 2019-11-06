@@ -1,6 +1,8 @@
 import React from 'react';
 import './WeatherBox.css';
 import WeatherOne from './WeatherOne';
+import { format } from 'util';
+import { parse } from 'path';
 
 const wData = [
   {
@@ -39,18 +41,76 @@ const wData = [
   }
 ];
 
+let formattedWData = {};
 
+const CtoF = tempC => ((1.8 * tempC) + 32);
+
+const FtoC = tempF => ((32 - tempF)/1.8);
+
+const KtoC = tempK =>  tempK -  - 273.15;
+
+
+function parseDates(unixtime) {
+    let date = new Date(unixtime);
+    return date.toLocaleString('en-GB', { timeZone: 'UTC' });
+}
+
+function parseOWData(data1) {
+    
+
+    // Day of Week
+    const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    let date = new Date(data1.dt * 1000);
+    let dayNum = date.getDay();
+    let day = weekDays[dayNum];
+    formattedWData["day"] = day;
+
+    
+    // WeatherIcon
+    let iconID = data1.weather[0].icon;
+    const iconURL =`https://openweathermap.org/img/w/${iconID}.png`;
+    formattedWData["icon"] = iconURL;
+
+
+    // Temperature - High and Low
+    let temp_highC = KtoC(data1.main.temp_max);
+    let temp_lowC = KtoC(data1.main.temp_min);
+    formattedWData["temp_max"] = temp_highC;
+    formattedWData["temp_min"] = temp_lowC;
+    
+    console.log(formattedWData);
+    return formattedWData;
+}
 
 
 
 class WeatherBox extends React.Component {
+    constructor(props) {
+        super(props)
+
+        this.state= {
+            formattedWData: {
+                day: '',
+                icon: '',
+                temp_high: '',
+                temp_low: ''
+            }
+        }
+        this.updateData = this.updateData.bind(this)
+    }
+
+    updateData() {
+        this.setState({
+            formattedWData
+        })
+    }
  
     render() {
         return (
             <div>
-                <div className="today">{Date.now().toLocaleString()}</div>
+                <div className="today">{parseDates(Date.now())}</div>
                 <div className="wthr5days">
-                    <WeatherOne wData={wData}/>
+                    <WeatherOne wData={this.state}/>
                     <WeatherOne />
                     <WeatherOne />
                     <WeatherOne />
