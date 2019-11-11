@@ -1,8 +1,8 @@
 import React from 'react';
 import './WeatherBox.css';
 import WeatherOne from './WeatherOne';
-import { format } from 'util';
-import { parse } from 'path';
+import moment from 'moment';
+
 
 const wData = [
   {
