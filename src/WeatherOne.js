@@ -4,17 +4,18 @@ import './WeatherOne.css'
 class WeatherOne extends React.Component {
 
     render() {
+        console.log("W1: Props", this.props);
         return (
           <div className="wthr1day">
-            <p className="day">{this.props.formattedWData.day}</p>
+            <p className="days">{this.props.dayy}</p>
             <img
               className="wthrIco"
-              src={this.props.formattedWData.icon}
+              src={this.props.icon}
               alt="weather icon"
             />
             <div className="temphl">
-              <span className="tehigh">{this.props.formattedWData.temp_max}</span>
-              <span className="telow">{this.props.formattedWData.temp_min}</span>
+              <span className="tehigh">{this.props.temp_max}</span>
+              <span className="telow">{this.props.temp_min}</span>
             </div>
           </div>
         );

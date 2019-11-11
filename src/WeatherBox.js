@@ -47,7 +47,7 @@ const CtoF = tempC => ((1.8 * tempC) + 32);
 
 const FtoC = tempF => ((32 - tempF)/1.8);
 
-const KtoC = tempK =>  tempK -  - 273.15;
+const KtoC = tempK =>  tempK -  273.15;
 
 
 function parseDates(unixtime) {
@@ -56,15 +56,15 @@ function parseDates(unixtime) {
 }
 
 function parseOWData(data1) {
-    
+  console.log(data1);
 
     // Day of Week
     const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    let date = new Date(data1.dt * 1000);
+    let date = new Date(data1.dt);
     let dayNum = date.getDay();
     let day = weekDays[dayNum];
-    formattedWData["day"] = day;
-
+    formattedWData["dayy"] = day;
+    console.log(date, dayNum, day);
     
     // WeatherIcon
     let iconID = data1.weather[0].icon;
@@ -79,7 +79,11 @@ function parseOWData(data1) {
     formattedWData["temp_min"] = temp_lowC;
     
     console.log(formattedWData);
-    return formattedWData;
+    // return formattedWData;
+
+    this.setState({
+      formattedWData
+    })
 }
 
 
@@ -90,27 +94,27 @@ class WeatherBox extends React.Component {
 
         this.state= {
             formattedWData: {
-                day: '',
+                dayy: '',
                 icon: '',
                 temp_high: '',
                 temp_low: ''
             }
         }
-        this.updateData = this.updateData.bind(this)
+        // this.updateData = this.updateData.bind(this)
     }
 
-    updateData() {
-        this.setState({
-            formattedWData
-        })
-    }
+    // updateData() {
+    //     this.setState({
+    //         formattedWData
+    //     })
+    // }
  
     render() {
         return (
             <div>
                 <div className="today">{parseDates(Date.now())}</div>
                 <div className="wthr5days">
-                    <WeatherOne wData={this.state}/>
+                    <WeatherOne wData={this.state.formattedWData}/>
                     <WeatherOne />
                     <WeatherOne />
                     <WeatherOne />
